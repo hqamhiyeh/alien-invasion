@@ -1,5 +1,3 @@
-"""Main game loop"""
-
 import sys
 
 import pygame
