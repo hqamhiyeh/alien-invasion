@@ -79,8 +79,6 @@ class AlienInvasion:
         """Start a new game when the player clicks Play."""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
-            # Reset the game settings.
-            self.settings.initialize_dynamic_settings()
             self._start_game()
 
     def _check_keydown_events(self, event):
@@ -104,6 +102,7 @@ class AlienInvasion:
 
     def _start_game(self):
         """Reset game state and activate game."""
+        self.settings.initialize_dynamic_settings()
         self.stats.reset_stats()
         self.sb.prep_score()
         self.game_active = True
