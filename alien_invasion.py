@@ -120,6 +120,18 @@ class AlienInvasion:
         # Hide the mouse cursor.
         pygame.mouse.set_visible(False)
 
+    def _start_new_level(self):
+        # Destroy existing bullets and create a new fleet.
+        self.bullets.empty()
+        self._create_fleet()
+
+        # Increase difficulty
+        self.settings.increase_speed()
+
+        # Increment level
+        self.stats.level += 1
+        self.sb.prep_level()
+
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
         if len(self.bullets) < self.settings.bullets_allowed:
@@ -151,16 +163,7 @@ class AlienInvasion:
             self.sb.check_high_score()
 
         if not self.aliens:
-            # Destroy existing bullets and create a new fleet.
-            self.bullets.empty()
-            self._create_fleet()
-
-            # Increase difficulty
-            self.settings.increase_speed()
-
-            # Increment level
-            self.stats.level += 1
-            self.sb.prep_level()
+            self._start_new_level()
 
     def _update_aliens(self):
         """Check if the fleet is at an edge, then update positions."""
