@@ -131,6 +131,14 @@ class AlienInvasion:
         # Increment level
         self.stats.level += 1
         self.sb.prep_level()
+    
+    def _end_game(self):
+        self.game_active = False
+
+        if self.stats.is_new_high_score:
+            self.stats.save_high_score()
+
+        pygame.mouse.set_visible(True)
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
@@ -188,8 +196,7 @@ class AlienInvasion:
             # Pause
             sleep(0.5)
         else:
-            self.game_active = False
-            pygame.mouse.set_visible(True)
+            self._end_game()
 
     def _check_failure(self):
         """Check for any fail states and respond appropriately."""
