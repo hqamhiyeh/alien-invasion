@@ -3,6 +3,7 @@ from time import sleep
 
 import pygame
 
+from audio import Audio
 from settings import Settings
 from game_stats import GameStats
 from scoreboard import Scoreboard
@@ -27,6 +28,9 @@ class AlienInvasion:
 
         # Set the background color.
         self.bg_color = (230, 230, 230)
+
+        # Load sound effects.
+        self.audio = Audio()
 
         # Create an instance to store game statistics,
         #   and create a scoreboard.
@@ -131,7 +135,7 @@ class AlienInvasion:
         # Increment level
         self.stats.level += 1
         self.sb.prep_level()
-    
+
     def _end_game(self):
         self.game_active = False
 
@@ -145,6 +149,7 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
+            self.audio.play_shooting_sound()
 
     def _update_bullets(self):
         """Update position of bullets and get rid of old bullets."""
@@ -167,6 +172,7 @@ class AlienInvasion:
         if collisions:
             for aliens in collisions.values():
                 self.stats.score += self.settings.alien_points * len(aliens)
+                self.audio.play_alien_death_sound()
             self.sb.prep_score()
             self.sb.check_high_score()
 
@@ -180,6 +186,8 @@ class AlienInvasion:
 
     def _ship_hit(self):
         """Respond to the ship being hit by an alien."""
+        self.audio.play_ship_death_sound()
+
         if self.stats.ships_left > 0:
             # Decrement ships_left.
             self.stats.ships_left -= 1
