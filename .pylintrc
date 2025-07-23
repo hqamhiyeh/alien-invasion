@@ -1,0 +1,12 @@
+[MAIN]
+extension-pkg-allow-list=pygame
+
+[FORMAT]
+max-line-length=79
+
+[MESSAGES CONTROL]
+# Disable
+#   C0114 missing-module-docstring
+#   R0902 too-many-instance-attributes
+#   R0903 too-few-public-methods
+disable=C0114, R0902, R0903
