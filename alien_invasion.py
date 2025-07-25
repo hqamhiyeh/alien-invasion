@@ -3,6 +3,7 @@ from time import sleep
 
 import pygame
 
+from version import __version__
 from audio import Audio
 from settings import Settings
 from game_stats import GameStats
@@ -17,6 +18,9 @@ class AlienInvasion:
 
     def __init__(self):
         """Initialize the game, and create game resources."""
+        print(f"Alien Invasion v{__version__} " \
+               "(github.com/hqamhiyeh/alien-invasion)")
+
         pygame.init()
 
         self.clock = pygame.time.Clock()
