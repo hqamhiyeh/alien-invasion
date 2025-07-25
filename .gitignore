@@ -203,4 +203,4 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Alien Invasion
-save
+alien_invasion/save
