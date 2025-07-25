@@ -3,13 +3,16 @@ from typing import TYPE_CHECKING
 import pygame
 from pygame.sprite import Sprite
 
+from paths import resource_path
+
 if TYPE_CHECKING:
     from alien_invasion import AlienInvasion
 
 class Ship(Sprite):
     """A class to manage the ship."""
 
-    def __init__(self, ai_game: 'AlienInvasion', image_path='images/ship.bmp'):
+    def __init__(self, ai_game: 'AlienInvasion',
+                 image_path=resource_path('images/ship.bmp')):
         """Initialize the ship and set its starting position."""
         super().__init__()
         self.screen = ai_game.screen

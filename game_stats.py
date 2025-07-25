@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from paths import save_path
+
 if TYPE_CHECKING:
     from alien_invasion import AlienInvasion
 
@@ -15,7 +17,7 @@ class GameStats:
 
         # High score should never be reset.
         self.high_score = 0
-        self.high_score_path = Path('high_score.json')
+        self.high_score_path = Path(save_path('high_score.json'))
         self._load_high_score()
 
     def reset_stats(self):
@@ -34,4 +36,5 @@ class GameStats:
     def save_high_score(self):
         """Write high score to save file."""
         contents = json.dumps(self.high_score)
+        self.high_score_path.parent.mkdir(parents=True, exist_ok=True)
         self.high_score_path.write_text(contents, encoding='utf-8')

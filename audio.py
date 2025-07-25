@@ -1,12 +1,17 @@
 from pygame import mixer
 
+from paths import resource_path
+
 class Audio():
     """A class to manage the audio in the game."""
 
     def __init__(self):
-        self.shooting_sound = mixer.Sound('sounds/shoot.ogg')
-        self.alien_death_sound = mixer.Sound('sounds/explosion-1.ogg')
-        self.ship_death_sound = mixer.Sound('sounds/explosion-2.ogg')
+        self.shooting_sound = mixer.Sound(
+            resource_path('sounds/shoot.ogg'))
+        self.alien_death_sound = mixer.Sound(
+            resource_path('sounds/explosion-1.ogg'))
+        self.ship_death_sound = mixer.Sound(
+            resource_path('sounds/explosion-2.ogg'))
 
     def play_shooting_sound(self):
         """Play shooting sound effect."""
