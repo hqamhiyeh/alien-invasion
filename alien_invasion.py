@@ -132,6 +132,7 @@ class AlienInvasion:
         # Destroy existing bullets and create a new fleet.
         self.bullets.empty()
         self._create_fleet()
+        self.settings.fleet_direction = 1
 
         # Increase difficulty
         self.settings.increase_speed()
@@ -203,6 +204,7 @@ class AlienInvasion:
 
             # Create a new fleet and center the ship.
             self._create_fleet()
+            self.settings.fleet_direction = 1
             self.ship.center_ship()
 
             # Pause
