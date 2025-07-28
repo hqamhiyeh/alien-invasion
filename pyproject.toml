@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alien-invasion"
+requires-python = ">=3.13.3"
+dependencies = ["pygame-ce"]
+dynamic = ["version"]
+
+[dependency-groups]
+lint = ["pylint"]
+
+[tool.setuptools]
+packages = ["alien_invasion"]
+package-dir = {"alien_invasion" = "alien_invasion"}
+
+[tool.setuptools.package-data]
+"alien_invasion" = [
+    "images/*",
+    "sounds/*"
+]
+
+[tool.setuptools.exclude-package-data]
+"alien_invasion" = [
+    "save/*",
+    "__pycache__"
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "alien_invasion.version.__version__"}
