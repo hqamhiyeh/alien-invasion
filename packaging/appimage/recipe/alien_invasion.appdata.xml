@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>alien_invasion</id>
+    <name>Alien Invasion</name>
+    <summary>A space shoot `em up game</summary>
+    <description>
+        <p>Aliens are invading! Shoot down alien ships to destroy their fleets. Survive for as long as you can and rack up points for a high score.</p>
+    </description>
+    <launchable type="desktop-id">alien_invasion.desktop</launchable>
+    <url type="homepage">https://github.com/hqamhiyeh/alien-invasion</url>
+    <provides>
+        <id>alien_invasion.desktop</id>
+    </provides>
+</component>
